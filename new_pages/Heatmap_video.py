@@ -101,7 +101,6 @@ def show_heatmap():
         """
     )
 
-
     with st.expander(
         "Instrucciones", expanded=False
     ):

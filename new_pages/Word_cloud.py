@@ -5,8 +5,6 @@ import os
 from wordcloud import WordCloud
 from nltk.corpus import stopwords
 
-from io import BytesIO
-
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 
@@ -58,7 +56,7 @@ def create_wordcloud(
     # Create a wordcloud from the text
     wordcloud = WordCloud(
         background_color='black',
-        width=1000,
+        width=800,
         height=600,
         colormap=mpl.colormaps['rainbow'],
         max_words=max_words_to_show,
@@ -67,13 +65,13 @@ def create_wordcloud(
     ).generate(text)
 
     # Display the wordcloud
+    plt.figure(figsize=(20,15))
     plt.imshow(wordcloud, interpolation='bilinear')
     plt.axis('off')
-    img_bytes = BytesIO()
-    plt.savefig(img_bytes, format="png")
-    img_bytes.seek(0)
-    
-    return img_bytes
+    plt.tight_layout(pad = 0)
+    plt.savefig('image.png')
+
+    return
 
 ###########################################
 # Instanciación de objetos
@@ -118,14 +116,14 @@ def show_wordcloud():
 
     max_words = st.slider('Elije la cantidad máxima de palabras', 20, 80)
 
-    fig = create_wordcloud(
+    create_wordcloud(
         comments_df,
         'comment_text',
         stop_words=esp_stop,
         max_words_to_show=max_words,
         video=wordcloud_video,
         )
+    
     st.image(
-        fig,
-        width=800
+        'image.png',
         )

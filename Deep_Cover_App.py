@@ -33,7 +33,7 @@ pages = [
     'Distribución de sentimientos',
     'Relación POS vs NEG',
     'Datos crudos',
-    # 'Información',
+    'Información',
     ]
 page_to_show = st.selectbox('Seleccione la página a mostrar', pages)
 
