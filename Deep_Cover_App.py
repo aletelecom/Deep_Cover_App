@@ -1,5 +1,7 @@
 import streamlit as st
-# from SessionState import _get_state
+
+import nltk
+nltk.download('stopwords')
 
 
 st.set_page_config(
